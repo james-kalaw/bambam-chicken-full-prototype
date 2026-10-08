@@ -1,0 +1,136 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-inter);
+  --font-heading: var(--font-fredoka);
+  --font-display: var(--font-fredoka);
+  --color-bambam-orange: #f7931e;
+  --color-bambam-red: #d93a22;
+  --color-bambam-cream: #fff8d6;
+  --color-bambam-yellow: #fcf3a2;
+  --color-bambam-brown: #3b2a1f;
+  --color-success: #1e7b3c;
+  --color-success-soft: #e6f4ea;
+  --color-warning: #a35200;
+  --color-warning-soft: #fff1d6;
+  --color-danger: #c62828;
+  --color-danger-soft: #fdeaea;
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+}
+
+:root {
+  /* Admin / default theme: calm, warm neutrals with Bambam accents */
+  --background: #faf8f5;
+  --foreground: #2b211a;
+  --card: #ffffff;
+  --card-foreground: #2b211a;
+  --popover: #ffffff;
+  --popover-foreground: #2b211a;
+  --primary: #d93a22;
+  --primary-foreground: #ffffff;
+  --secondary: #fff3d6;
+  --secondary-foreground: #3b2a1f;
+  --muted: #f3efe9;
+  --muted-foreground: #6b5d52;
+  --accent: #fff1dd;
+  --accent-foreground: #3b2a1f;
+  --destructive: #c62828;
+  --border: #e8e1d7;
+  --input: #ddd4c8;
+  --ring: #f7931e;
+  --chart-1: #f7931e;
+  --chart-2: #d93a22;
+  --chart-3: #8c5a3c;
+  --chart-4: #e9b949;
+  --chart-5: #5b8c85;
+  --radius: 0.75rem;
+  --sidebar: #ffffff;
+  --sidebar-foreground: #2b211a;
+  --sidebar-primary: #3b2a1f;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #fff1dd;
+  --sidebar-accent-foreground: #3b2a1f;
+  --sidebar-border: #e8e1d7;
+  --sidebar-ring: #f7931e;
+}
+
+/* Customer side: warmer cream background, same tokens otherwise */
+.theme-customer {
+  --background: #fffbea;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  button:not(:disabled), [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+  html {
+    @apply font-sans;
+  }
+}
+/* Bell wiggle when a new notification arrives */
+@keyframes bell-ring {
+  0%, 100% { transform: rotate(0); }
+  15% { transform: rotate(14deg); }
+  30% { transform: rotate(-12deg); }
+  45% { transform: rotate(10deg); }
+  60% { transform: rotate(-6deg); }
+  75% { transform: rotate(3deg); }
+}
+.animate-bell { animation: bell-ring 0.9s ease-in-out 2; transform-origin: top center; }
+
+/* Gentle bob used by the loading mascot */
+@keyframes mascot-bob {
+  0%, 100% { transform: translateY(0) rotate(-2deg); }
+  50% { transform: translateY(-8px) rotate(2deg); }
+}
+.animate-bob { animation: mascot-bob 1.4s ease-in-out infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-bell, .animate-bob { animation: none; }
+}
